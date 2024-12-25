@@ -20,33 +20,25 @@ local main = bt.Main
 
 writefile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
 
-for i = 1, 8 do
-	writefile("hact" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hact" .. i .. ".wav?raw=true"))
-	
-	if i <= 2 then
-		writefile("knockback" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/knockback" .. i .. ".wav?raw=true"))
-		writefile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
-		writefile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
-		writefile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
-	elseif i <= 3 then
-		writefile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
-		writefile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
-		writefile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
-	elseif i <= 5 then
-		writefile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
-	elseif i <= 6 then
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
-	elseif i <= 7 then
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+local filesToDownload = {
+	{prefix = "hact", range = {1, 8}},
+	{prefix = "knockback", range = {1, 2}},
+	{prefix = "heavy", range = {1, 5}},
+	{prefix = "hurt", range = {1, 7}},
+	{prefix = "light", range = {1, 6}},
+	{prefix = "rage", range = {1, 3}},
+	{prefix = "taunt", range = {1, 3}},
+}
+
+for _, file in ipairs(filesToDownload) do
+	for i = file.range[1], file.range[2] do
+		if not isfile(file.prefix .. i .. ".wav") then
+			local url = "https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/" .. file.prefix .. i .. ".wav?raw=true"
+			writefile(file.prefix .. i .. ".wav", game:HttpGet(url))
+		end
 	end
 end
+
 
 local function Notify(Text, Sound, Color, Fonts) --text function, sounds: tp, buzz, Gong, HeatDepleted
     local Text1 = string.upper(Text)
@@ -100,8 +92,9 @@ char.ChildAdded:Connect(
                 if main.HeatMove.TextLabel.Text ~= "Ultimate Essence " then
                     receivedsound = "hact" .. math.random(1, 8) .. ".wav"
                 else
-                    receivedsound = "taunt3.wav"
+                	receivedsound = "taunt3.wav"
                 end
+                task.wait(.25)
                 playSound(receivedsound)
             end
         end
