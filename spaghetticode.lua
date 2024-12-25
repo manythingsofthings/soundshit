@@ -5,10 +5,9 @@ local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local ME = ReplicatedStorage.Events.ME
 
 --// Cache
-local RPS = game.ReplicatedStorage
-local Voice = RPS.Voices:FindFirstChild(_G.dodconfig.useVoice)
+local rep = game.ReplicatedStorage
 local player = game.Players.LocalPlayer
-local character = player.Character
+local char = player.Character
 local pgui = player.PlayerGui
 local status = player.Status
 local plr = game.Players.LocalPlayer
@@ -48,25 +47,25 @@ for i = 1, 8 do
 	end
 end
 
-local function sendNotification(Text, Sound, Color) --text function, sounds: tp, buzz, Gong, HeatDepleted
-    local Text1 = string.upper(Text)
-    if Sound then
-        pgui.sendNotification:Fire(Text, Sound)
+local function sendNotification(text, sound, color) --text function, sounds: tp, buzz, Gong, HeatDepleted
+    local text1 = string.upper(text)
+    if sound then
+        pgui.sendNotification:Fire(text, sound)
     else
-        pgui.sendNotification:Fire(Text)
+        pgui.sendNotification:Fire(text)
     end
-    if Color then
-        for i, v in pairs(pgui.sendNotificationUI.Awards:GetChildren()) do
-            if v.Name == "XPEx" and v.Text == Text1 then
-                v.Text = Text
-                v.TextColor3 = Color
+    if color then
+        for i, v in pairs(pgui.NotifyUI.Awards:GetChildren()) do
+            if v.Name == "XPEx" and v.text == text1 then
+                v.Text = text
+                v.TextColor3 = color
             end
         end
     end
 end
 
 local function doingHact()
-    return (character:FindFirstChild("Heated") and true or false)
+    return (char:FindFirstChild("Heated") and true or false)
 end
 
 local function playSound(sound)
@@ -74,7 +73,7 @@ local function playSound(sound)
 		char.Head.Voice:Destroy()		
 	end		
     local soundclone = Instance.new("Sound")
-    soundclone.Parent = character.Head
+    soundclone.Parent = char.Head
     soundclone.Name = "Voice"
     soundclone.SoundId = getsynasset(sound)
     soundclone.Volume = 0.7
@@ -91,10 +90,10 @@ local receivedsound
 local HeatActionCD = false
 char.ChildAdded:Connect(
     function(child)
-        if child.Name == "Heated" and child:WaitForChild("Heating", 0.5).Value ~= character then
+        if child.Name == "Heated" and child:WaitForChild("Heating", 0.5).Value ~= char then
             local isThrowing = child:WaitForChild("Throwing", 0.5)
             if not isThrowing then
-                if main.HeatMove.TextLabel.Text ~= "Ultimate Essence " then
+                if main.HeatMove.textLabel.text ~= "Ultimate Essence " then
                     receivedsound = "hact" .. math.random(1, 8) .. ".wav"
                 else
                 	receivedsound = "taunt3.wav"
@@ -104,7 +103,7 @@ char.ChildAdded:Connect(
             end
         end
         local HitCD = false
-        if child.Name == "Hitstunned" and not character:FindFirstChild("Ragdolled") then
+        if child.Name == "Hitstunned" and not char:FindFirstChild("Ragdolled") then
             if HitCD == false then
                 HitCD = true
                 receivedsound = "hurt" .. math.random(1, 7) .. ".wav"
@@ -128,7 +127,7 @@ char.ChildAdded:Connect(
     end
 )
 
-character.ChildRemoved:Connect(
+char.ChildRemoved:Connect(
     function(child)
         if child.Name == "Ragdolled" then
             wait(0.1)
@@ -140,7 +139,7 @@ character.ChildRemoved:Connect(
     end
 )
 
-character.HumanoidRootPart.ChildAdded:Connect(
+char.HumanoidRootPart.ChildAdded:Connect(
     function(child)
         if child.Name == "KnockOut" or child.Name == "KnockOutRare" then
             child.Volume = 0
@@ -151,7 +150,7 @@ character.HumanoidRootPart.ChildAdded:Connect(
 local EvadeCD = false
 status.FFC.CEvading.Changed:Connect(
     function()
-        if status.FFC.Evading.Value == true and character:FindFirstChild("BeingHacked") and not EvadeCD then
+        if status.FFC.Evading.Value == true and char:FindFirstChild("BeingHacked") and not EvadeCD then
             EvadeCD = true
             receivedsound = GetRandom(Voice.Dodge)
             playSound(receivedsound)
@@ -164,13 +163,13 @@ status.FFC.CEvading.Changed:Connect(
         end
     end
 )
-local fakeTauntSound = RPS.Sounds:FindFirstChild("Laugh"):Clone()
-fakeTauntSound.Parent = RPS.Sounds
+local fakeTauntSound = rep.Sounds:FindFirstChild("Laugh"):Clone()
+fakeTauntSound.Parent = rep.Sounds
 fakeTauntSound.Name = "FakeLaugh"
 fakeTauntSound.Volume.Value = 0
-RPS.Moves.Taunt.Sound.Value = "FakeLaugh"
-RPS.Moves.RushTaunt.Sound.Value = "FakeLaugh"
-RPS.Moves.GoonTaunt.Sound.Value = "FakeLaugh"
+rep.Moves.Taunt.Sound.Value = "FakeLaugh"
+rep.Moves.RushTaunt.Sound.Value = "FakeLaugh"
+rep.Moves.GoonTaunt.Sound.Value = "FakeLaugh"
 status.Taunting.Changed:Connect(
     function()
         if status.Taunting.Value == true and status.CurrentMove.Value.Name ~= "BeastTaunt" then
