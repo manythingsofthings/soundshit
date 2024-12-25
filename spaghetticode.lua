@@ -17,42 +17,48 @@ local interf = pgui.Interface
 local bt = interf.Battle
 local main = bt.Main
 
-writefile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
+local functiom checkfile(name, data)
+	if not isfile(name) then
+		writefile(name, data)
+	end
+end
+
+checkfile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
 
 for i = 1, 8 do
-	writefile("hact" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hact" .. i .. ".wav?raw=true"))
+	checkfile("hact" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hact" .. i .. ".wav?raw=true"))
 	
 	if i <= 2 then
-		writefile("knockback" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/knockback" .. i .. ".wav?raw=true"))
-		writefile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
-		writefile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
-		writefile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
+		checkfile("knockback" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/knockback" .. i .. ".wav?raw=true"))
+		checkfile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
+		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		checkfile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
+		checkfile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
+		checkfile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
 	elseif i <= 3 then
-		writefile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
-		writefile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
-		writefile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
+		checkfile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
+		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		checkfile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
+		checkfile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
+		checkfile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
 	elseif i <= 5 then
-		writefile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
+		checkfile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
+		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		checkfile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
 	elseif i <= 6 then
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
+		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		checkfile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
 	elseif i <= 7 then
-		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
 	end
 end
 
 local function sendNotification(text, sound, color) --text function, sounds: tp, buzz, Gong, HeatDepleted
     local text1 = string.upper(text)
     if sound then
-        pgui.sendNotification:Fire(text, sound)
+        pgui.Notify:Fire(text, sound)
     else
-        pgui.sendNotification:Fire(text)
+        pgui.Notify:Fire(text)
     end
     if color then
         for i, v in pairs(pgui.NotifyUI.Awards:GetChildren()) do
