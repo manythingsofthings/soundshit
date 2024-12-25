@@ -102,7 +102,7 @@ char.ChildAdded:Connect(
                 else
                 	receivedsound = "taunt3.wav"
                 end
-                task.wait(.5)
+                task.wait(.25)
                 playSound(receivedsound)
             end
         end
