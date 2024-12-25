@@ -100,9 +100,8 @@ char.ChildAdded:Connect(
                 if main.HeatMove.TextLabel.Text ~= "Ultimate Essence " then
                     receivedsound = "hact" .. math.random(1, 8) .. ".wav"
                 else
-                	receivedsound = "taunt3.wav"
+                    receivedsound = "taunt3.wav"
                 end
-                task.wait(.25)
                 playSound(receivedsound)
             end
         end
