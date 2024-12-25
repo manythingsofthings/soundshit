@@ -147,22 +147,6 @@ char.HumanoidRootPart.ChildAdded:Connect(
     end
 )
 
-local EvadeCD = false
-status.FFC.CEvading.Changed:Connect(
-    function()
-        if status.FFC.Evading.Value == true and char:FindFirstChild("BeingHacked") and not EvadeCD then
-            EvadeCD = true
-            receivedsound = GetRandom(Voice.Dodge)
-            playSound(receivedsound)
-            delay(
-                3,
-                function()
-                    EvadeCD = false
-                end
-            )
-        end
-    end
-)
 local fakeTauntSound = rep.Sounds:FindFirstChild("Laugh"):Clone()
 fakeTauntSound.Parent = rep.Sounds
 fakeTauntSound.Name = "FakeLaugh"
