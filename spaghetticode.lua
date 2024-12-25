@@ -99,7 +99,7 @@ char.ChildAdded:Connect(
         if child.Name == "Heated" and child:WaitForChild("Heating", 0.5).Value ~= char then
             local isThrowing = child:WaitForChild("Throwing", 0.5)
             if not isThrowing then
-                if main.HeatMove.textLabel.text ~= "Ultimate Essence " then
+                if main.HeatMove.TextLabel.text ~= "Ultimate Essence " then
                     receivedsound = "hact" .. math.random(1, 8) .. ".wav"
                 else
                 	receivedsound = "taunt3.wav"
