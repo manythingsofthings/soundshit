@@ -5,9 +5,10 @@ local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local ME = ReplicatedStorage.Events.ME
 
 --// Cache
-local rep = game.ReplicatedStorage
+local RPS = game.ReplicatedStorage
+local Voice = RPS.Voices:FindFirstChild(_G.dodconfig.useVoice)
 local player = game.Players.LocalPlayer
-local char = player.Character
+local character = player.Character
 local pgui = player.PlayerGui
 local status = player.Status
 local plr = game.Players.LocalPlayer
@@ -17,61 +18,58 @@ local interf = pgui.Interface
 local bt = interf.Battle
 local main = bt.Main
 
-local functiom checkfile(name, data)
-	if not isfile(name) then
-		writefile(name, data)
-	end
-end
-
-checkfile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
+writefile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
 
 for i = 1, 8 do
-	checkfile("hact" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hact" .. i .. ".wav?raw=true"))
+	writefile("hact" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hact" .. i .. ".wav?raw=true"))
 	
 	if i <= 2 then
-		checkfile("knockback" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/knockback" .. i .. ".wav?raw=true"))
-		checkfile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
-		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		checkfile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
-		checkfile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
-		checkfile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
+		writefile("knockback" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/knockback" .. i .. ".wav?raw=true"))
+		writefile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
+		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
+		writefile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
+		writefile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
 	elseif i <= 3 then
-		checkfile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
-		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		checkfile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
-		checkfile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
-		checkfile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
+		writefile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
+		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
+		writefile("rage" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/rage" .. i .. ".wav?raw=true"))
+		writefile("taunt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/taunt" .. i .. ".wav?raw=true"))
 	elseif i <= 5 then
-		checkfile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
-		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		checkfile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
+		writefile("heavy" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/heavy" .. i .. ".wav?raw=true"))
+		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
 	elseif i <= 6 then
-		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
-		checkfile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
+		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		writefile("light" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/light" .. i .. ".wav?raw=true"))
 	elseif i <= 7 then
-		checkfile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
+		writefile("hurt" .. i .. ".wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/hurt" .. i .. ".wav?raw=true"))
 	end
 end
 
-local function sendNotification(text, sound, color) --text function, sounds: tp, buzz, Gong, HeatDepleted
-    local text1 = string.upper(text)
-    if sound then
-        pgui.Notify:Fire(text, sound)
+local function Notify(Text, Sound, Color, Fonts) --text function, sounds: tp, buzz, Gong, HeatDepleted
+    local Text1 = string.upper(Text)
+    if Sound then
+        pgui.Notify:Fire(Text, Sound)
     else
-        pgui.Notify:Fire(text)
+        pgui.Notify:Fire(Text)
     end
-    if color then
+    if Color then
         for i, v in pairs(pgui.NotifyUI.Awards:GetChildren()) do
-            if v.Name == "XPEx" and v.text == text1 then
-                v.Text = text
-                v.TextColor3 = color
+            if v.Name == "XPEx" and v.Text == Text1 then
+                v.Text = Text
+                v.TextColor3 = Color
+                if Fonts then
+                    v.Font = Enum.Font[Fonts]
+                end
             end
         end
     end
 end
 
 local function doingHact()
-    return (char:FindFirstChild("Heated") and true or false)
+    return (character:FindFirstChild("Heated") and true or false)
 end
 
 local function playSound(sound)
@@ -79,7 +77,7 @@ local function playSound(sound)
 		char.Head.Voice:Destroy()		
 	end		
     local soundclone = Instance.new("Sound")
-    soundclone.Parent = char.Head
+    soundclone.Parent = character.Head
     soundclone.Name = "Voice"
     soundclone.SoundId = getsynasset(sound)
     soundclone.Volume = 0.7
@@ -96,10 +94,10 @@ local receivedsound
 local HeatActionCD = false
 char.ChildAdded:Connect(
     function(child)
-        if child.Name == "Heated" and child:WaitForChild("Heating", 0.5).Value ~= char then
+        if child.Name == "Heated" and child:WaitForChild("Heating", 0.5).Value ~= character then
             local isThrowing = child:WaitForChild("Throwing", 0.5)
             if not isThrowing then
-                if main.HeatMove.TextLabel.text ~= "Ultimate Essence " then
+                if main.HeatMove.TextLabel.Text ~= "Ultimate Essence " then
                     receivedsound = "hact" .. math.random(1, 8) .. ".wav"
                 else
                 	receivedsound = "taunt3.wav"
@@ -109,7 +107,7 @@ char.ChildAdded:Connect(
             end
         end
         local HitCD = false
-        if child.Name == "Hitstunned" and not char:FindFirstChild("Ragdolled") then
+        if child.Name == "Hitstunned" and not character:FindFirstChild("Ragdolled") then
             if HitCD == false then
                 HitCD = true
                 receivedsound = "hurt" .. math.random(1, 7) .. ".wav"
@@ -133,7 +131,7 @@ char.ChildAdded:Connect(
     end
 )
 
-char.ChildRemoved:Connect(
+character.ChildRemoved:Connect(
     function(child)
         if child.Name == "Ragdolled" then
             wait(0.1)
@@ -145,7 +143,7 @@ char.ChildRemoved:Connect(
     end
 )
 
-char.HumanoidRootPart.ChildAdded:Connect(
+character.HumanoidRootPart.ChildAdded:Connect(
     function(child)
         if child.Name == "KnockOut" or child.Name == "KnockOutRare" then
             child.Volume = 0
@@ -153,13 +151,29 @@ char.HumanoidRootPart.ChildAdded:Connect(
     end
 )
 
-local fakeTauntSound = rep.Sounds:FindFirstChild("Laugh"):Clone()
-fakeTauntSound.Parent = rep.Sounds
+local EvadeCD = false
+status.FFC.CEvading.Changed:Connect(
+    function()
+        if status.FFC.Evading.Value == true and character:FindFirstChild("BeingHacked") and not EvadeCD then
+            EvadeCD = true
+            receivedsound = GetRandom(Voice.Dodge)
+            playSound(receivedsound)
+            delay(
+                3,
+                function()
+                    EvadeCD = false
+                end
+            )
+        end
+    end
+)
+local fakeTauntSound = RPS.Sounds:FindFirstChild("Laugh"):Clone()
+fakeTauntSound.Parent = RPS.Sounds
 fakeTauntSound.Name = "FakeLaugh"
 fakeTauntSound.Volume.Value = 0
-rep.Moves.Taunt.Sound.Value = "FakeLaugh"
-rep.Moves.RushTaunt.Sound.Value = "FakeLaugh"
-rep.Moves.GoonTaunt.Sound.Value = "FakeLaugh"
+RPS.Moves.Taunt.Sound.Value = "FakeLaugh"
+RPS.Moves.RushTaunt.Sound.Value = "FakeLaugh"
+RPS.Moves.GoonTaunt.Sound.Value = "FakeLaugh"
 status.Taunting.Changed:Connect(
     function()
         if status.Taunting.Value == true and status.CurrentMove.Value.Name ~= "BeastTaunt" then
@@ -195,7 +209,7 @@ status.CurrentMove.Changed:Connect(
         end
     end
 )
-sendNotification("PS2 VOICE LOADED", nil, Color3.fromRGB(255, 255, 255))
+Notify("Voice Mod loaded", nil, Color3.fromRGB(255, 255, 255), "RobotoMono")
 
 status.cfh:GetPropertyChangedSignal("Value"):Connect(function()
 	if status.cfh.Value then
