@@ -203,13 +203,6 @@ status.CurrentMove.Changed:Connect(
 )
 Notify("Voice Mod loaded", nil, Color3.fromRGB(255, 255, 255), "RobotoMono")
 
-status.cfh:GetPropertyChangedSignal("Value"):Connect(function()
-	if status.cfh.Value then
-		task.wait(.5)
-		playSound("rage1.wav")
-	end
-end)
-
 status.ChildAdded:Connect(function(c)
 	if c.Name == "ANGRY" then
 		receivedsound = "rage" .. math.random(1, 3) .. ".wav"
