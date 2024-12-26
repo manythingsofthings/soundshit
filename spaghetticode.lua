@@ -18,6 +18,10 @@ local interf = pgui.Interface
 local bt = interf.Battle
 local main = bt.Main
 
+if not isfolder("ps2kiryu_voice") then
+	makefolder("ps2kiryu_voice")
+end
+
 writefile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
 
 local filesToDownload = {
@@ -32,9 +36,9 @@ local filesToDownload = {
 
 for _, file in ipairs(filesToDownload) do
 	for i = file.range[1], file.range[2] do
-		if not isfile(file.prefix .. i .. ".wav") then
+		if not isfile("ps2kiryu_voice/" .. file.prefix .. i .. ".wav") then
 			local url = "https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/" .. file.prefix .. i .. ".wav?raw=true"
-			writefile(file.prefix .. i .. ".wav", game:HttpGet(url))
+			writefile("ps2kiryu_voice/" .. file.prefix .. i .. ".wav", game:HttpGet(url))
 		end
 	end
 end
@@ -90,9 +94,9 @@ char.ChildAdded:Connect(
             local isThrowing = child:WaitForChild("Throwing", 0.5)
             if not isThrowing then
                 if main.HeatMove.TextLabel.Text ~= "Ultimate Essence " then
-                    receivedsound = "hact" .. math.random(1, 8) .. ".wav"
+                    receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 8) .. ".wav"
                 else
-                	receivedsound = "taunt3.wav"
+                	receivedsound = "ps2kiryu_voice/taunt3.wav"
                 end
                 task.wait(.25)
                 playSound(receivedsound)
@@ -102,7 +106,7 @@ char.ChildAdded:Connect(
         if child.Name == "Hitstunned" and not character:FindFirstChild("Ragdolled") then
             if HitCD == false then
                 HitCD = true
-                receivedsound = "hurt" .. math.random(1, 7) .. ".wav"
+                receivedsound = "ps2kiryu_voice/hurt" .. math.random(1, 7) .. ".wav"
                 playSound(receivedsound)
                 delay(
                     2,
@@ -113,11 +117,11 @@ char.ChildAdded:Connect(
             end
         end
         if child.Name == "Ragdolled" then
-            receivedsound = "knockback" .. math.random(1, 2) .. ".wav"
+            receivedsound = "ps2kiryu_voice/knockback" .. math.random(1, 2) .. ".wav"
             playSound(receivedsound)
         end
         if child.Name == "ImaDea" then
-            receivedsound = "knockback" .. math.random(1, 2) .. ".wav"
+            receivedsound = "ps2kiryu_voice/knockback" .. math.random(1, 2) .. ".wav"
             playSound(receivedsound)
         end
     end
@@ -128,7 +132,7 @@ character.ChildRemoved:Connect(
         if child.Name == "Ragdolled" then
             wait(0.1)
             if not string.match(status.CurrentMove.Value.Name, "Getup") then
-                receivedsound = "getup.wav"
+                receivedsound = "ps2kiryu_voice/getup.wav"
                 playSound(receivedsound)
             end
         end
@@ -169,7 +173,7 @@ RPS.Moves.GoonTaunt.Sound.Value = "FakeLaugh"
 status.Taunting.Changed:Connect(
     function()
         if status.Taunting.Value == true and status.CurrentMove.Value.Name ~= "BeastTaunt" then
-            receivedsound = "taunt" .. math.random(1, 3) .. ".wav"
+            receivedsound = "ps2kiryu_voice/taunt" .. math.random(1, 3) .. ".wav"
             playSound(receivedsound)
         end
     end
@@ -195,7 +199,7 @@ status.CurrentMove.Changed:Connect(
                     not string.match(status.CurrentMove.Value.Name, "Grab") and
                     not string.match(status.CurrentMove.Value.Name, "CounterHook")
              then
-                receivedsound = "heavy" .. math.random(1, 5) .. ".wav"
+                receivedsound = "ps2kiryu_voice/heavy" .. math.random(1, 5) .. ".wav"
                 playSound(receivedsound)
             end
         end
@@ -205,7 +209,7 @@ Notify("Voice Mod loaded", nil, Color3.fromRGB(255, 255, 255), "RobotoMono")
 
 status.ChildAdded:Connect(function(c)
 	if c.Name == "ANGRY" then
-		receivedsound = "rage" .. math.random(1, 3) .. ".wav"
+		receivedsound = "ps2kiryu_voice/rage" .. math.random(1, 3) .. ".wav"
         playSound(receivedsound)
     end
 end)
