@@ -70,7 +70,9 @@ end
 
 local function playSound(sound)
 	if char.Head:FindFirstChild("Voice") then
-		char.Head.Voice:Destroy()		
+		if not string.match(char.Head.Voice.SoundId, "rage") then
+			char.Head.Voice:Destroy()		
+		end
 	end		
     local soundclone = Instance.new("Sound")
     soundclone.Parent = character.Head
@@ -184,7 +186,7 @@ status.CurrentMove.Changed:Connect(
         if string.match(status.CurrentMove.Value.Name, "Attack") or string.match(status.CurrentMove.Value.Name, "Punch") then
             if LightAttackCD == false then
                 LightAttackCD = true
-                receivedsound = "light" .. math.random(1, 6) .. ".wav"
+                receivedsound = "ps2kiryu_voice/light" .. math.random(1, 6) .. ".wav"
                 playSound(receivedsound)
                 delay(
                     0.35,
