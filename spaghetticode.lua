@@ -104,7 +104,6 @@ char.ChildAdded:Connect(
                 playSound(receivedsound)
 	    	else
 				receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 8) .. ".wav"
-				task.wait(.25)
                 playSound(receivedsound)
             end
         end
