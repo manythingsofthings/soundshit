@@ -98,9 +98,13 @@ char.ChildAdded:Connect(
                 if main.HeatMove.TextLabel.Text ~= "Ultimate Essence " then
                     receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 8) .. ".wav"
                 else
-                	receivedsound = "ps2kiryu_voice/taunt3.wav"
+                    receivedsound = "ps2kiryu_voice/taunt3.wav"
                 end
                 task.wait(.25)
+                playSound(receivedsound)
+	    	else
+				receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 8) .. ".wav"
+				task.wait(.25)
                 playSound(receivedsound)
             end
         end
