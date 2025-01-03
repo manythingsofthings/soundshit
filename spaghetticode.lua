@@ -102,8 +102,9 @@ char.ChildAdded:Connect(
                 end
                 task.wait(.25)
                 playSound(receivedsound)
-	    	else
-				receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 8) .. ".wav"
+	    else
+		receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 8) .. ".wav"
+		task.wait(.15)
                 playSound(receivedsound)
             end
         end
@@ -135,7 +136,7 @@ char.ChildAdded:Connect(
 character.ChildRemoved:Connect(
     function(child)
         if child.Name == "Ragdolled" then
-            wait(0.1)
+            task.wait(0.1)
             if not string.match(status.CurrentMove.Value.Name, "Getup") then
                 receivedsound = "ps2kiryu_voice/getup.wav"
                 playSound(receivedsound)
