@@ -195,7 +195,7 @@ status.CurrentMove.Changed:Connect(
         end
     end
 )
-Notify("Voice Mod loaded", nil, Color3.fromRGB(255, 255, 255), "RobotoMono")
+Notify("VOICE LOADED", nil, Color3.fromRGB(255, 0, 0), "Arial")
 
 status.ChildAdded:Connect(function(c)
 	if c.Name == "ANGRY" then
