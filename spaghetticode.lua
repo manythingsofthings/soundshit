@@ -166,6 +166,7 @@ fakeTauntSound.Parent = RPS.Sounds
 fakeTauntSound.Name = "FakeLaugh"
 fakeTauntSound.Volume.Value = 0
 RPS.Moves.Taunt.Sound.Value = "FakeLaugh"
+RPS.Moves.DragonTaunt.Sound.Value = "FakeLaugh"
 RPS.Moves.RushTaunt.Sound.Value = "FakeLaugh"
 RPS.Moves.GoonTaunt.Sound.Value = "FakeLaugh"
 status.Taunting.Changed:Connect(
