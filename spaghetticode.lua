@@ -105,14 +105,14 @@ char.ChildAdded:Connect(
             local isThrowing = child:WaitForChild("Throwing", 0.5)
             if not isThrowing then
                 if main.HeatMove.TextLabel.Text ~= "Ultimate Essence" then
-                    receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 8) .. ".wav"
+                    receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 12) .. ".wav"
                 else
                     receivedsound = "ps2kiryu_voice/taunt3.wav"
                 end
                 task.wait(.25)
                 playSound(receivedsound)
 	    else
-		receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 8) .. ".wav"
+		receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 12) .. ".wav"
 		task.wait(.15)
                 playSound(receivedsound)
             end
@@ -173,7 +173,7 @@ RPS.Moves.GoonTaunt.Sound.Value = "FakeLaugh"
 status.Taunting.Changed:Connect(
     function()
         if status.Taunting.Value == true and status.CurrentMove.Value.Name ~= "BeastTaunt" then
-            receivedsound = "ps2kiryu_voice/taunt" .. math.random(1, 3) .. ".wav"
+            receivedsound = "ps2kiryu_voice/taunt" .. math.random(1, 8) .. ".wav"
             playSound(receivedsound)
         end
     end
@@ -184,7 +184,7 @@ status.CurrentMove.Changed:Connect(
         if string.match(status.CurrentMove.Value.Name, "Attack") or string.match(status.CurrentMove.Value.Name, "Punch") then
             if LightAttackCD == false then
                 LightAttackCD = true
-                receivedsound = "ps2kiryu_voice/light" .. math.random(1, 6) .. ".wav"
+                receivedsound = "ps2kiryu_voice/light" .. math.random(1, 13) .. ".wav"
                 playSound(receivedsound)
                 delay(
                     0.35,
@@ -199,7 +199,11 @@ status.CurrentMove.Changed:Connect(
                     not string.match(status.CurrentMove.Value.Name, "Grab") and
                     not string.match(status.CurrentMove.Value.Name, "CounterHook")
              then
-                receivedsound = "ps2kiryu_voice/heavy" .. math.random(1, 5) .. ".wav"
+                if math.random(1,2) == 1 then
+                	receivedsound = "ps2kiryu_voice/heavy" .. math.random(1, 5) .. ".wav"
+                else
+                	receivedsound = "ps2kiryu_voice/heavy" .. math.random(9, 15) .. ".wav"
+                end
                 playSound(receivedsound)
             end
         end
