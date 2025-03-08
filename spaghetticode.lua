@@ -173,7 +173,7 @@ RPS.Moves.GoonTaunt.Sound.Value = "FakeLaugh"
 status.Taunting.Changed:Connect(
     function()
         if status.Taunting.Value == true and status.CurrentMove.Value.Name ~= "BeastTaunt" then
-            receivedsound = "ps2kiryu_voice/taunt" .. math.random(1, 8) .. ".wav"
+            receivedsound = "ps2kiryu_voice/taunt" .. math.random(1, 7) .. ".wav"
             playSound(receivedsound)
         end
     end
