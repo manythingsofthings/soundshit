@@ -32,7 +32,7 @@ local filesToDownload = {
 	{prefix = "hurt", range = {1, 7}},
 	{prefix = "light", range = {1, 13}},
 	{prefix = "rage", range = {1, 3}},
-	{prefix = "taunt", range = {1, 8}},
+	{prefix = "taunt", range = {1, 7}},
 }
 
 for _, file in ipairs(filesToDownload) do
