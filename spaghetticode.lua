@@ -25,13 +25,14 @@ end
 writefile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
 
 local filesToDownload = {
-	{prefix = "hact", range = {1, 8}},
+	{prefix = "hact", range = {1, 12}},
 	{prefix = "knockback", range = {1, 2}},
 	{prefix = "heavy", range = {1, 5}},
+	{prefix = "heavy", range = {9, 15}},
 	{prefix = "hurt", range = {1, 7}},
-	{prefix = "light", range = {1, 6}},
+	{prefix = "light", range = {1, 13}},
 	{prefix = "rage", range = {1, 3}},
-	{prefix = "taunt", range = {1, 3}},
+	{prefix = "taunt", range = {1, 8}},
 }
 
 for _, file in ipairs(filesToDownload) do
