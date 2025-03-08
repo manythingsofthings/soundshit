@@ -32,7 +32,7 @@ local filesToDownload = {
 	{prefix = "hurt", range = {1, 7}},
 	{prefix = "light", range = {1, 13}},
 	{prefix = "rage", range = {1, 3}},
-	{prefix = "taunt", range = {1, 7}},
+	{prefix = "taunt", range = {1, 8}},
 }
 
 for _, file in ipairs(filesToDownload) do
@@ -87,7 +87,40 @@ local function playSound(sound)
     soundclone.Parent = character.Head
     soundclone.Name = "Voice"
     soundclone.SoundId = getsynasset(sound)
-    soundclone.Volume = 0.7
+    soundclone.Volume = .7
+    
+    for i = 4, 15 do
+    	if string.find(sound, "hact") then
+    		if i >= 9 and string.find(sound, "hact" .. i) then
+    			soundclone.Volume = .35
+    		end
+    	elseif string.find(sound, "knockback") then
+    		if i >= 3 and string.find(sound, "knockback" .. i) then
+    			soundclone.Volume = .35
+    		end
+    	elseif string.find(sound, "heavy") then
+    		if i >= 6 and string.find(sound, "heavy" .. i) then
+    			soundclone.Volume = .35
+    		end
+    	elseif string.find(sound, "hurt") then
+    		if i >= 8 and string.find(sound, "hurt" .. i) then
+    			soundclone.Volume = .35
+    		end
+    	elseif string.find(sound, "light") then
+    		if i >= 6 and string.find(sound, "light" .. i) then
+    			soundclone.Volume = .35
+    		end
+    	elseif string.find(sound, "rage") then
+    		if i >= 4 and string.find(sound, "rage" .. i) then
+    			soundclone.Volume = .35
+    		end
+    	elseif string.find(sound, "taunt") then
+    		if i >= 4 and string.find(sound, "taunt" .. i) then
+    			soundclone.Volume = .35
+    		end
+    	end
+    end
+    
     soundclone:Play()
     soundclone.Ended:Connect(
         function()
