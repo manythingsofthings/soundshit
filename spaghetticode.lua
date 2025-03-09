@@ -79,7 +79,7 @@ end
 
 local function playSound(sound)
 	if char.Head:FindFirstChild("Voice") then
-		if not string.match(char.Head.Voice.SoundId, "rage") then
+		if not string.match(sound, "rage") then
 			char.Head.Voice:Destroy()		
 		end
 	end		
@@ -138,7 +138,15 @@ char.ChildAdded:Connect(
             local isThrowing = child:WaitForChild("Throwing", 0.5)
             if not isThrowing then
                 if main.HeatMove.TextLabel.Text ~= "Ultimate Essence" then
-                    receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 12) .. ".wav"
+                	if math.random(1, 2) == 1 then
+                    	receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 12) .. ".wav"
+                    else
+                    	if math.random(1,2) == 1 then
+		                	receivedsound = "ps2kiryu_voice/heavy" .. math.random(1, 5) .. ".wav"
+		                else
+		                	receivedsound = "ps2kiryu_voice/heavy" .. math.random(9, 15) .. ".wav"
+		                end
+					end
                 else
                     receivedsound = "ps2kiryu_voice/taunt3.wav"
                 end
