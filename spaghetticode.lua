@@ -115,6 +115,8 @@ local function sendNotification(text, color, stroke, sound)
 	end
 end
 
+sendNotification("Loading PS2 voice…\n(This may take a while!)")
+
 local function doingHact()
 	return (character:FindFirstChild("Heated") and true or false)
 end
