@@ -16,6 +16,36 @@ if not isfolder("ps2kiryu_voice") then
 	makefolder("ps2kiryu_voice")
 end
 
+local function sendNotification(text, color, stroke, sound)
+	local upper = string.upper(text)
+	-- Fire the notification event
+	if sound then
+		pgui["Notify"]:Fire(text, sound)
+	else
+		pgui["Notify"]:Fire(text)
+	end
+	-- If color is not provided, default to white
+	if not color then
+		color = Color3.new(1, 1, 1)
+	end
+
+	if not stroke then
+		stroke = Color3.new(0, 0, 0)
+	end
+
+	-- Listen for when a new child is added to NotifyUI.Awards
+	for i, v in ipairs(pgui.NotifyUI.Awards:GetChildren()) do
+		if v.Name == "XPEx" and v.Text == upper then
+			v.Text = text
+			v.TextColor3 = color
+			v.TextStrokeColor3 = stroke
+			v.Text = text
+		end
+	end
+end
+
+sendNotification("Loading PS2 voice…\n(This may take a while!)")
+
 writefile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
 
 local filesToDownload = {
@@ -85,37 +115,6 @@ for _, file in ipairs(filesToDownload) do
 		end
 	end
 end
-
-
-local function sendNotification(text, color, stroke, sound)
-	local upper = string.upper(text)
-	-- Fire the notification event
-	if sound then
-		pgui["Notify"]:Fire(text, sound)
-	else
-		pgui["Notify"]:Fire(text)
-	end
-	-- If color is not provided, default to white
-	if not color then
-		color = Color3.new(1, 1, 1)
-	end
-
-	if not stroke then
-		stroke = Color3.new(0, 0, 0)
-	end
-
-	-- Listen for when a new child is added to NotifyUI.Awards
-	for i, v in ipairs(pgui.NotifyUI.Awards:GetChildren()) do
-		if v.Name == "XPEx" and v.Text == upper then
-			v.Text = text
-			v.TextColor3 = color
-			v.TextStrokeColor3 = stroke
-			v.Text = text
-		end
-	end
-end
-
-sendNotification("Loading PS2 voice…\n(This may take a while!)")
 
 local function doingHact()
 	return (character:FindFirstChild("Heated") and true or false)
