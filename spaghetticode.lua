@@ -109,6 +109,7 @@ local filesToDownload = {
 for _, file in ipairs(filesToDownload) do
 	for i = file.range[1], file.range[2] do
 		if not isfile("ps2kiryu_voice/" .. file.prefix .. i .. ".wav") then
+			-- print("tryna download " .. file.prefix .. i .. ".wav...")
 			local url = "https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/" .. file.prefix .. i .. ".wav?raw=true"
 			writefile("ps2kiryu_voice/" .. file.prefix .. i .. ".wav", game:HttpGet(url))
 		end
@@ -128,7 +129,7 @@ local function playSound(sound)
 	local soundclone = Instance.new("Sound")
 	soundclone.Parent = character.Head
 	soundclone.Name = "Voice"
-	soundclone.SoundId = getsynasset(sound)
+	soundclone.SoundId = getcustomasset(sound)
 	soundclone.Volume = .7
 	for i = 4, 15 do
 		if string.find(sound, "hact") then
