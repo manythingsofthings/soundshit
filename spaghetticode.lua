@@ -43,7 +43,7 @@ local function sendNotification(text, color, stroke, sound)
 	end
 end
 
-sendNotification("Loading PS2 voice…\n(This may take a while!)")
+sendNotification("Loading PS2 voice…\n(56 files, this may take a while!)")
 
 writefile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
 
@@ -109,7 +109,7 @@ local filesToDownload = {
 for _, file in ipairs(filesToDownload) do
 	for i = file.range[1], file.range[2] do
 		if not isfile("ps2kiryu_voice/" .. file.prefix .. i .. ".wav") then
-			-- print("tryna download " .. file.prefix .. i .. ".wav...")
+			print("tryna download " .. file.prefix .. i .. ".wav...")
 			local url = "https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/" .. file.prefix .. i .. ".wav?raw=true"
 			writefile("ps2kiryu_voice/" .. file.prefix .. i .. ".wav", game:HttpGet(url))
 		end
