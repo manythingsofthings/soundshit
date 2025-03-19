@@ -12,8 +12,6 @@ local interf = pgui.Interface
 local bt = interf.Battle
 local main = bt.Main
 
-if not getcustomasset then getcustomasset = getsynasset end
-
 if not isfolder("ps2kiryu_voice") then
 	makefolder("ps2kiryu_voice")
 end
