@@ -121,11 +121,6 @@ local function doingHact()
 end
 
 local function playSound(sound)
-	if char.Head:FindFirstChild("Voice") then
-		if not string.match(sound, "rage") then
-			char.Head.Voice:Destroy()		
-		end
-	end
 	local soundclone = Instance.new("Sound")
 	soundclone.Parent = character.Head
 	soundclone.Name = "Voice"
