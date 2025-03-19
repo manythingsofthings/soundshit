@@ -129,7 +129,7 @@ local function playSound(sound)
 	local soundclone = Instance.new("Sound")
 	soundclone.Parent = character.Head
 	soundclone.Name = "Voice"
-	soundclone.SoundId = getcustomasset(sound)
+	soundclone.SoundId = getsynasset(sound)
 	soundclone.Volume = .7
 	for i = 4, 15 do
 		if string.find(sound, "hact") then
