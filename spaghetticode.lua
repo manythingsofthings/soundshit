@@ -1,5 +1,5 @@
 --// Cache
-local RPS = game.ReplicatedStorage
+luocal RPS = game.ReplicatedStorage
 local Voice = RPS.Voices:FindFirstChild(_G.dodconfig.useVoice)
 local player = game.Players.LocalPlayer
 local character = player.Character
@@ -11,6 +11,8 @@ local pgui = plr.PlayerGui
 local interf = pgui.Interface
 local bt = interf.Battle
 local main = bt.Main
+
+if not getcustomasset then getcustomasset = getsynasset end
 
 if not isfolder("ps2kiryu_voice") then
 	makefolder("ps2kiryu_voice")
