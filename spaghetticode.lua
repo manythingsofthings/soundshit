@@ -1,5 +1,5 @@
 --// Cache
-luocal RPS = game.ReplicatedStorage
+local RPS = game.ReplicatedStorage
 local Voice = RPS.Voices:FindFirstChild(_G.dodconfig.useVoice)
 local player = game.Players.LocalPlayer
 local character = player.Character
