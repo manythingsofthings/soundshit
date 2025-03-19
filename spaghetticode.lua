@@ -101,7 +101,7 @@ local filesToDownload = {
 		prefix = "taunt",
 		range = {
 			1,
-			8
+			7
 		}
 	},
 }
