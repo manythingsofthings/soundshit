@@ -172,7 +172,7 @@ char.ChildAdded:Connect(
 	if child.Name == "Heated" and child:WaitForChild("Heating", 0.5).Value ~= character then
 		local isThrowing = child:WaitForChild("Throwing", 0.5)
 		if not isThrowing then
-			if main.HeatMove.TextLabel.Text ~= "Ultimate Essence" then
+			if main.HeatMove.TextLabel.Text ~= "Ultimate Essence" and main.HeatMove.TextLabel.Text ~= "Ultimate Essence " then
 				if math.random(1, 2) == 1 then
 					receivedsound = "ps2kiryu_voice/hact" .. math.random(1, 12) .. ".wav"
 				else
