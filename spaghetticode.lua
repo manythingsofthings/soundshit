@@ -45,8 +45,6 @@ end
 
 sendNotification("Loading PS2 voice…\n(56 files, this may take a while!)")
 
-writefile("getup.wav", game:HttpGet("https://github.com/manythingsofthings/r2f-ps2kiryu-voice-mod/blob/main/files/getup.wav?raw=true"))
-
 local filesToDownload = {
 	{
 		prefix = "hact",
