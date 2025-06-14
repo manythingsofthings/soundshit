@@ -212,17 +212,6 @@ char.ChildAdded:Connect(
 	end
 end)
 
-character.ChildRemoved:Connect(
-    function(child)
-	if child.Name == "Ragdolled" then
-		task.wait(0.1)
-		if not string.match(status.CurrentMove.Value.Name, "Getup") then
-			receivedsound = "ps2kiryu_voice/getup.wav"
-			playSound(receivedsound)
-		end
-	end
-end)
-
 character.HumanoidRootPart.ChildAdded:Connect(
     function(child)
 	if child.Name == "KnockOut" or child.Name == "KnockOutRare" then
